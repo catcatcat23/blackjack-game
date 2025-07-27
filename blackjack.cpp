@@ -81,14 +81,20 @@ public:
 
     void showHand(bool showAll = true) {
         for (size_t i = 0; i < hand.size(); i++) {
-            if (!showAll && i == 1)
-                cout << "[??] ";
-            else
-                hand[i].display();
+            if (!showAll && i == 1) {
+                cout << "[??] ";  // 隐藏第二张牌
+            } else {
+                hand[i].display();  // 显示牌面
+            }
         }
-        cout << "→ Total: " << getScore() << endl;
-    }
 
+    // 只在所有牌都展示时显示总分
+    if (showAll) {
+        cout << " → Total: " << getScore() << endl;
+    } else {
+        cout << endl;  // 如果不显示总分，直接换行
+    }
+}
     void resetHand() {
         hand.clear();
     }
